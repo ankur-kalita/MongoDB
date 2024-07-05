@@ -1,0 +1,1 @@
+mongodb+srv://forgivemeankur11:<password>@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69
