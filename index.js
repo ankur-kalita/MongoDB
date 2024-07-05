@@ -1,7 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const app = express()
 
-mongoose.connect("mongodb+srv://forgivemeankur11:ckByS05QmMlqAJUf@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69"
+app.use(express.json())
+
+
+mongoose.connect("mongodb+srv://forgivemeankur11:<password>@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69"
     ).then(() => {
     console.log('Connected to MongoDB')
     })
@@ -29,12 +33,25 @@ mongoose.connect("mongodb+srv://forgivemeankur11:ckByS05QmMlqAJUf@riboru69.cto6x
             required : true
         }
     })
+
+    const productModel = mongoose.model('products', productSchema)
     
-    
-    const app = express()
+    // Create
+
+    app.post('/api/products' , async(req, res)=>{
+        
+        const product = productModel.create({
+            product_name : req.body.product_name,
+            product_price : req.body.product,
+            isInStock : req.body.isInStock,
+            category : req.body.category
+        })
+        console.log(product)
+
+        return res.status(201).json({message : 'Product Created'})
+    });
 
 
 app.listen(6969, ()=>{
     console.log('Server is running on port 6969')
 })
-
