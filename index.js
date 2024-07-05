@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb+srv://forgivemeankur11:ckByS05QmMlqAJUf@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69"
+mongoose.connect("mongodb+srv://forgivemeankur11:<password>@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69"
     ).then(() => {
     console.log('Connected to MongoDB')
     })
