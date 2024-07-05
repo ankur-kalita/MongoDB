@@ -8,8 +8,33 @@ mongoose.connect("mongodb+srv://forgivemeankur11:ckByS05QmMlqAJUf@riboru69.cto6x
     .catch((err) => {
     console.log('Failed to connect to MongoDB', err)
     })
-const app = express()
+    
+    // ProductSchema
+    
+    const productSchema = new mongoose.Schema({
+        product_name: {
+            type: String,
+            required: true
+        },
+        product_price: {
+            type: Number,
+            required: true
+        },
+        isInStock : {
+            type : Boolean,
+            required : true
+        },
+        category : {
+            type : String,
+            required : true
+        }
+    })
+    
+    
+    const app = express()
 
-app.listen(8086, ()=>{
-    console.log('Server is running on port 8086')
+
+app.listen(6969, ()=>{
+    console.log('Server is running on port 6969')
 })
+
