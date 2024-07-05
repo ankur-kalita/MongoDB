@@ -5,7 +5,7 @@ const app = express()
 app.use(express.json())
 
 
-mongoose.connect("mongodb+srv://forgivemeankur11:<password>@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69"
+mongoose.connect("mongodb+srv://forgivemeankur11:ckByS05QmMlqAJUf@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69"
     ).then(() => {
     console.log('Connected to MongoDB')
     })
@@ -42,7 +42,7 @@ mongoose.connect("mongodb+srv://forgivemeankur11:<password>@riboru69.cto6xzz.mon
         
         const product = productModel.create({
             product_name : req.body.product_name,
-            product_price : req.body.product,
+            product_price : req.body.product_price,
             isInStock : req.body.isInStock,
             category : req.body.category
         })
