@@ -1,11 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+require('dotenv').config()
 
 app.use(express.json())
 
 
-mongoose.connect("mongodb+srv://forgivemeankur11:ckByS05QmMlqAJUf@riboru69.cto6xzz.mongodb.net/?retryWrites=true&w=majority&appName=Riboru69"
+mongoose.connect(process.env.MONGO_URL
     ).then(() => {
     console.log('Connected to MongoDB')
     })
@@ -51,6 +52,37 @@ mongoose.connect("mongodb+srv://forgivemeankur11:ckByS05QmMlqAJUf@riboru69.cto6x
         return res.status(201).json({message : 'Product Created'})
     });
 
+    // Get route
+
+    app.get('/api/products' , async(req, res)=>{
+        const allProducts = await productModel.find({})
+
+        return res.json(allProducts)
+    })
+
+    // Get product by id 
+
+    app.get('/api/products/:id' , async(req, res)=>{
+        const product = await productModel.findById(req.params.id)
+
+        return res.json(product)
+    })
+
+    // Update product 
+
+    app.put('/api/products/:id' , async(req, res)=>{
+       const updatedProduct = await productModel.findByIdAndUpdate(req.params.id, req.body)
+
+       return res.json(updatedProduct)
+    })
+
+    // Delete product
+
+    app.delete('/api/products/:id', async(req, res)=>{
+        const deletedProduct = await productModel.findByIdAndDelete(req.params.id)
+
+        return res.json(deletedProduct)
+    })
 
 app.listen(6969, ()=>{
     console.log('Server is running on port 6969')
